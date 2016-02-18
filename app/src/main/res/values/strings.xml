@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Chato-Fy</string>
+    <string name="roll_label">Roll No.</string>
+    <string name="login_pass">Password</string>
+    <string name="signup_button">Sign Up</string>
+    <string name="login_button">Login</string>
+    <string name="forgot_string">Forgot Password ?</string>
 </resources>

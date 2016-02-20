@@ -18,4 +18,6 @@ public class SignUpActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void checkRegister(View view) {
+    }
 }

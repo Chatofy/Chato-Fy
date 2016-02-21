@@ -8,7 +8,7 @@
     <string name="welcome_text">Welcome</string>
     <string name="Signuprollnumber">Roll Number</string>
     <string name="SignupPassword">Password</string>
-    <string name="repeatPAsswordSignup">Repeat Password</string>
+    <string name="repeatPAsswordSignup">Confirm Password</string>
     <string name="SignUpRegister">Register</string>
     <string name="arsingup">Already Registered.?</string>
     <string name="SUlabel">Sign Up</string>

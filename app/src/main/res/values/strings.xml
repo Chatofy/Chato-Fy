@@ -6,4 +6,11 @@
     <string name="login_button">Login</string>
     <string name="forgot_string">Forgot Password ?</string>
     <string name="welcome_text">Welcome</string>
+    <string name="Signuprollnumber">Roll Number</string>
+    <string name="SignupPassword">Password</string>
+    <string name="repeatPAsswordSignup">Repeat Password</string>
+    <string name="SignUpRegister">Register</string>
+    <string name="arsingup">Already Registered.?</string>
+    <string name="SUlabel">Sign Up</string>
+    <string name="forgotSignin">Sign In?</string>
 </resources>

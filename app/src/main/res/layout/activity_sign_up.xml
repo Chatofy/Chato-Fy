@@ -14,20 +14,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Sign Up"
-        android:id="@+id/textView"
+        android:text="@string/SUlabel"
+        android:id="@+id/signupLabel"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:clickable="false"
-        android:textSize="40dp" />
+        android:textSize="40sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Roll Number"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/textView"
+        android:text="@string/Signuprollnumber"
+        android:id="@+id/SingnupRollNumberLabel"
+        android:layout_below="@+id/signupLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="44dp" />
@@ -36,9 +36,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Password"
-        android:id="@+id/textView3"
-        android:layout_below="@+id/textView2"
+        android:text="@string/SignupPassword"
+        android:id="@+id/SignupPasswordLabel"
+        android:layout_below="@+id/SingnupRollNumberLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="45dp" />
@@ -47,19 +47,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Repeat Password"
-        android:id="@+id/textView4"
+        android:text="@string/repeatPAsswordSignup"
+        android:id="@+id/repeatPasswordLabel"
         android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/textView"
-        android:layout_toStartOf="@+id/textView" />
+        android:layout_toLeftOf="@+id/signupLabel"
+        android:layout_toStartOf="@+id/signupLabel" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:layout_above="@+id/textView3"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView"
+        android:id="@+id/rollNumberField"
+        android:layout_above="@+id/SignupPasswordLabel"
+        android:layout_alignLeft="@+id/signupLabel"
+        android:layout_alignStart="@+id/signupLabel"
         android:layout_marginLeft="34dp"
         android:layout_marginStart="34dp"
         android:layout_alignParentRight="true"
@@ -70,28 +70,28 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText2"
-        android:layout_alignBottom="@+id/textView3"
-        android:layout_alignLeft="@+id/editText"
-        android:layout_alignStart="@+id/editText" />
+        android:id="@+id/passwordField"
+        android:layout_alignBottom="@+id/SignupPasswordLabel"
+        android:layout_alignLeft="@+id/rollNumberField"
+        android:layout_alignStart="@+id/rollNumberField" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText3"
-        android:layout_alignTop="@+id/textView4"
-        android:layout_alignLeft="@+id/editText2"
-        android:layout_alignStart="@+id/editText2" />
+        android:id="@+id/repeatPasswordField"
+        android:layout_alignTop="@+id/repeatPasswordLabel"
+        android:layout_alignLeft="@+id/passwordField"
+        android:layout_alignStart="@+id/passwordField" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register"
+        android:text="@string/SignUpRegister"
         android:id="@+id/registerButton"
         android:layout_marginTop="53dp"
-        android:layout_below="@+id/textView4"
+        android:layout_below="@+id/repeatPasswordLabel"
         android:layout_centerHorizontal="true"
         android:onClick="checkRegister" />
 
@@ -99,12 +99,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Already Registered.?"
+        android:text="@string/arsingup"
         android:id="@+id/alreadyRegisteredText"
         android:layout_marginBottom="38dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView"
+        android:layout_alignRight="@+id/signupLabel"
+        android:layout_alignEnd="@+id/signupLabel"
         android:clickable="true"
         android:onClick="gotoMainActivity" />
 

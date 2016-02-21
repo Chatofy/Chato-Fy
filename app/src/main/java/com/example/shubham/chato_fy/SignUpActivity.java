@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 public class SignUpActivity extends AppCompatActivity {
 
+    DbHelper helper = new DbHelper(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,9 +33,20 @@ public class SignUpActivity extends AppCompatActivity {
         String repeatPasswordFieldStr = repeatPasswordField.getText().toString();
 
         if(!passwordFieldStr.equals(repeatPasswordFieldStr)){
-
+            //PopUp Message
             Toast passError = Toast.makeText(this, "Passwords Don't Match!", Toast.LENGTH_LONG);
             passError.show();
+        }
+        else{
+            Contact c = new Contact();
+            c.setRollNumber(rollNumberFieldStr);
+            c.setPassword(passwordFieldStr);
+            helper.insertDetails(c);
+
+            Intent i = new Intent(this,MainActivity.class);
+            startActivity(i);
+            Toast cool = Toast.makeText(this,"Account Created! Please Login To Continue",Toast.LENGTH_LONG);
+            cool.show();
         }
     }
 }

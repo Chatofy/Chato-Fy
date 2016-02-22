@@ -13,4 +13,8 @@
     <string name="arsingup">Already Registered.?</string>
     <string name="SUlabel">Sign Up</string>
     <string name="forgotSignin">Sign In?</string>
+    <string name="forgotRoll">Roll Number</string>
+    <string name="forgotNewPass">New Password</string>
+    <string name="forgotConformPass">Confirm Password</string>
+    <string name="forgotChangePassButton">Change Password</string>
 </resources>

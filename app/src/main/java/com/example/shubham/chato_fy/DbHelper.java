@@ -47,6 +47,17 @@ public class DbHelper extends SQLiteOpenHelper {
         db.close();
 
     }
+    public int updateDetails(Contact c){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_ROLL, c.getRollNumber());
+        values.put(COLUMN_PASS, c.getPassword());
+
+        // updating row
+        return db.update(TABLE_NAME, values, COLUMN_ID + " = ?",
+                new String[] { String.valueOf(c.getId()) });
+    }
 
     public String searchPassword(String roll){
         db = this.getReadableDatabase();
@@ -66,6 +77,24 @@ public class DbHelper extends SQLiteOpenHelper {
         }
         cursor.close();
         return matchedPassword;
+    }
+    public boolean searchRoll(String roll){
+        db = this.getReadableDatabase();
+        String query = "select roll from "+TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+        String forgotrollNumber = "Not Found!";
+        if(cursor.moveToFirst()){
+            do{
+                forgotrollNumber = cursor.getString(0);
+
+                if(forgotrollNumber.equals(roll)){
+                    break;
+                }
+            }while(cursor.moveToNext());
+
+        }
+        cursor.close();
+        return true;
     }
 
     @Override

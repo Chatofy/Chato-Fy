@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 public class DbHelper extends SQLiteOpenHelper {
 
@@ -98,7 +97,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
         String query = "select * from "+TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
-        String forgotrollNumber = "Not Found!";
+        String forgotrollNumber ;
         if(cursor.moveToFirst()){
             do{
                 forgotrollNumber = cursor.getString(1);

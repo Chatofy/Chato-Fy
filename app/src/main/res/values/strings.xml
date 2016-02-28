@@ -17,4 +17,6 @@
     <string name="forgotNewPass">New Password</string>
     <string name="forgotConformPass">Confirm Password</string>
     <string name="forgotChangePassButton">Change Password</string>
+    <string name="hint_Roll">Roll Number</string>
+    <string name="hint_Password">Password</string>
 </resources>

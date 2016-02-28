@@ -11,6 +11,7 @@
     android:textAlignment="center">
 
     <EditText
+        android:hint="@string/hint_Roll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
@@ -22,6 +23,7 @@
         android:layout_alignParentEnd="true" />
 
     <EditText
+        android:hint="@string/hint_Password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"

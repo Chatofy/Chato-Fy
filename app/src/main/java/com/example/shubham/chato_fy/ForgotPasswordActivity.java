@@ -30,22 +30,20 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         String forgotNewPasswordFieldStr = forgotNewPasswordField.getText().toString();
         String forgotConfirmPasswordFieldStr = forgotConfirmPasswordField.getText().toString();
 
-        boolean flag = helper.searchRoll(forgotConfirmPasswordFieldStr);
+        boolean flag = helper.searchRoll(forgotRollnumberFieldStr);
 
         if(!forgotNewPasswordFieldStr.equals(forgotConfirmPasswordFieldStr)){
             //PopUp Message
             Toast passError = Toast.makeText(this, "Passwords Don't Match!", Toast.LENGTH_LONG);
             passError.show();
         }
-        else if(!flag){
+        else if(flag != true ){
             Toast passError = Toast.makeText(this, "User Not Found!", Toast.LENGTH_LONG);
             passError.show();
         }
         else{
-            Contact c = new Contact();
-            //c.setRollNumber(rollNumberFieldStr);
-            //c.setPassword(passwordFieldStr);
-            helper.updateDetails(c,forgotRollnumberFieldStr,forgotNewPasswordFieldStr);
+
+            helper.updateDetails(forgotRollnumberFieldStr, forgotNewPasswordFieldStr);
 
             Intent i = new Intent(this,MainActivity.class);
             startActivity(i);

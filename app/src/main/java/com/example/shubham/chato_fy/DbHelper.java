@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 public class DbHelper extends SQLiteOpenHelper {
 
@@ -29,34 +30,47 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(TABLE_CREATE);
     }
 
-    public void insertDetails(Contact c){
+    public boolean insertDetails(Contact c){
 
-        db = getWritableDatabase();
-        ContentValues values = new ContentValues();
+        if(!c.getRollNumber().equals("")&&!c.getPassword().equals("")) {
+            db = getWritableDatabase();
+            ContentValues values = new ContentValues();
 
-        String q = "select * from "+TABLE_NAME;
-        Cursor cursor = db.rawQuery(q, null);
-        int count = cursor.getCount();
+            String q = "select * from " + TABLE_NAME;
+            Cursor cursor = db.rawQuery(q, null);
+            int count = cursor.getCount();
 
-        values.put(COLUMN_ID, count);
-        values.put(COLUMN_ROLL, c.getRollNumber());
-        values.put(COLUMN_PASS, c.getPassword());
+            values.put(COLUMN_ID, count);
+            values.put(COLUMN_ROLL, c.getRollNumber());
+            values.put(COLUMN_PASS, c.getPassword());
 
-        db.insert(TABLE_NAME, null, values);
-        cursor.close();
-        db.close();
+            db.insert(TABLE_NAME, null, values);
+            cursor.close();
+            db.close();
+        }
+        return true;
 
     }
-    public int updateDetails(Contact c){
+    public boolean updateDetails(String rollnnumber, String passWord){
+        boolean result = false;
+        String query = "select * from "+TABLE_NAME+" where "+COLUMN_ROLL+" = "+rollnnumber+";";
         SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        Contact c = new Contact();
+        if(cursor.moveToFirst()) {
+            c.setId(Integer.parseInt(cursor.getString(0)));
+            ContentValues values = new ContentValues();
 
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_ROLL, c.getRollNumber());
-        values.put(COLUMN_PASS, c.getPassword());
+            values.put(COLUMN_PASS, passWord);
 
-        // updating row
-        return db.update(TABLE_NAME, values, COLUMN_ID + " = ?",
-                new String[] { String.valueOf(c.getId()) });
+            // updating row
+            db.update(TABLE_NAME, values, COLUMN_ID + " = ?",
+                    new String[]{String.valueOf(c.getId())});
+            cursor.close();
+            db.close();
+            result = true;
+        }
+        return result;
     }
 
     public String searchPassword(String roll){
@@ -79,22 +93,25 @@ public class DbHelper extends SQLiteOpenHelper {
         return matchedPassword;
     }
     public boolean searchRoll(String roll){
+        boolean flag=false;
         db = this.getReadableDatabase();
-        String query = "select roll from "+TABLE_NAME;
+
+        String query = "select * from "+TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String forgotrollNumber = "Not Found!";
         if(cursor.moveToFirst()){
             do{
-                forgotrollNumber = cursor.getString(0);
+                forgotrollNumber = cursor.getString(1);
 
                 if(forgotrollNumber.equals(roll)){
+                    flag =  true;
                     break;
                 }
             }while(cursor.moveToNext());
 
         }
         cursor.close();
-        return true;
+        return flag;
     }
 
     @Override

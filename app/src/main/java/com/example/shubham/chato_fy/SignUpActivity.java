@@ -41,12 +41,13 @@ public class SignUpActivity extends AppCompatActivity {
             Contact c = new Contact();
             c.setRollNumber(rollNumberFieldStr);
             c.setPassword(passwordFieldStr);
-            helper.insertDetails(c);
+            if(helper.insertDetails(c)) {
 
-            Intent i = new Intent(this,MainActivity.class);
-            startActivity(i);
-            Toast cool = Toast.makeText(this,"Account Created! Please Login To Continue",Toast.LENGTH_LONG);
-            cool.show();
+                Intent i = new Intent(this, MainActivity.class);
+                startActivity(i);
+                Toast cool = Toast.makeText(this, "Account Created! Please Login To Continue", Toast.LENGTH_LONG);
+                cool.show();
+            }
         }
     }
 }

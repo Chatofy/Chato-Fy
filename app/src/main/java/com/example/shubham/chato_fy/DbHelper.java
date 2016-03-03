@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DbHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 1;
+    private static int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "Details.db";
     private static final String TABLE_NAME = "Details";
     private static final String COLUMN_ID = "id";
@@ -52,9 +52,10 @@ public class DbHelper extends SQLiteOpenHelper {
     }
     public boolean updateDetails(String rollnnumber, String passWord){
         boolean result = false;
-        String query = "select * from "+TABLE_NAME+" where "+COLUMN_ROLL+" = "+rollnnumber+";";
+        String query = "select * from "+TABLE_NAME+" where "+COLUMN_ROLL+" = '"+rollnnumber+"';";
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(query, null);
+        SQLiteDatabase db1 = this.getReadableDatabase();
+        Cursor cursor = db1.rawQuery(query, null);
         Contact c = new Contact();
         if(cursor.moveToFirst()) {
             c.setId(Integer.parseInt(cursor.getString(0)));
@@ -67,6 +68,7 @@ public class DbHelper extends SQLiteOpenHelper {
                     new String[]{String.valueOf(c.getId())});
             cursor.close();
             db.close();
+            db1.close();
             result = true;
         }
         return result;
@@ -115,7 +117,9 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        oldVersion = this.DATABASE_VERSION;
+        newVersion = oldVersion + 1;
+        this.DATABASE_VERSION = newVersion;
         this.db = db;
         String query = "DROP TABLE IF EXISTS "+TABLE_NAME;
         db.execSQL(query);

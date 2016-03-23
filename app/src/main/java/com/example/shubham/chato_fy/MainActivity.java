@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         if(passwordTextInputStr.equals(pass)){
             Toast success = Toast.makeText(this, "Login Successfull!", Toast.LENGTH_LONG);
             success.show();
+            Intent i = new Intent(this, ContactListActivity.class);
+            startActivity(i);
         }
         else{
             Toast error = Toast.makeText(this, "Invalid Login!", Toast.LENGTH_LONG);
